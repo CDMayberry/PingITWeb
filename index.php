@@ -94,7 +94,7 @@ session_start();
              <div class="col-lg-4">
                 <form id="formNotify" action="notify.php" method="post" class="form-horizontal">
                     <fieldset>
-                        <legend>Notification</legend>
+                        <legend>Test</legend>
                         <div class="form-group">
                             <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                             <div class="col-lg-10">
