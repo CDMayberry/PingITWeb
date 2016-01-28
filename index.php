@@ -131,6 +131,23 @@ session_start();
                         </div>
                     </fieldset>
                 </form>
+                <br/>
+                <form id="categoryForm" action="announce.php" method="post" class="form-horizontal">
+                    <fieldset>
+                        <legend>Category</legend>
+                        <div class="form-group">
+                            <label for="inputCategory" class="col-lg-2 control-label">Add Category</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputCategory" placeholder="New Category">
+                            </div>
+                        </div>
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="reset" class="btn btn-default">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </fieldset>
+                </form>
+                
             </div>
             <div class="col-lg-6">
                 <form action="faq.php" method="post" class="form-horizontal">
@@ -155,9 +172,7 @@ session_start();
                                 <button type="submit" class="btn btn-primary">Add Q&A</button>
                             </div>
                         </div>
-                        <div class="half-width">
-                           
-                        </div>
+                        <div class="half-width"></div>
                         
                     </fieldset>
                 </form>
