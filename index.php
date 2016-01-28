@@ -133,7 +133,7 @@ session_start();
                 </form>
             </div>
             <div class="col-lg-6">
-                <form action="faq.php" method="post">
+                <form action="faq.php" method="post" class="form-horizontal">
                     <fieldset>
                         <legend>Questions and Answers</legend>
                         <div class="half-width">
