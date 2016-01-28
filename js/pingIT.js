@@ -15,8 +15,10 @@ $(document).ready(function (){
         $("#cnlCatButton").removeClass("hidden");
         $("#cnlCatButton").one("click",function(){
             clearTimeout(timer);
-            $("#cnlCatButton").addClass("hidden");
-            $("#rmCatButton").removeClass("hidden");
+            
+            /* If AJAX */
+            //$("#cnlCatButton").addClass("hidden");
+            //$("#rmCatButton").removeClass("hidden");
         });
     })
 });
