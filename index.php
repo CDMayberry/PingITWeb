@@ -163,7 +163,7 @@ session_start();
                 </form>
                 <br/>
                 <div id="faqBox" class="well">
-                    
+                    <?php include "faqPartial.php"; ?>
                 </div>
             </div>
         </div>
