@@ -115,7 +115,7 @@ session_start();
                     </fieldset>
                 </form>
                 <br/>
-                <form id="announceForm" action="notify.php" method="post" class="form-horizontal">
+                <form id="announceForm" action="announce.php" method="post" class="form-horizontal">
                     <fieldset>
                         <legend>Announcement</legend>
                         <div class="form-group">
@@ -146,7 +146,7 @@ session_start();
                             <div class="form-group">
                                 <label for="answerArea" class="col-lg-2 control-label">Message</label>
                                 <div class="col-lg-10">
-                                    <textarea name="answer" class="form-control" rows="3" id="answerArea">Your computer is ready for pickup</textarea>
+                                    <textarea name="answer" class="form-control" rows="3" id="answerArea"></textarea>
                                     <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
                                 </div>
                             </div>
