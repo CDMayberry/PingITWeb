@@ -9,5 +9,9 @@ textarea {
 }
 
 #faqBox {
-    height: 30em;
+    height: 26em;
+}
+
+.half-width {
+    width: 50%;
 }

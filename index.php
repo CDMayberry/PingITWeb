@@ -80,63 +80,91 @@ session_start();
     <!-- Page Content -->
     <div class="container">
         <?php if(!isset($_SESSION["username"])) : ?>
-        <div class="row">
+        <!--<div class="row">
             <div class="col-lg-12 text-center">
                 <h1>The start of PingIT: IT HAS BEGUN</h1>
-                <p class="lead">And it has STUFF!                <?php if(isset($_COOKIE["Posted"])){echo "<br/> This was posted: ".$_COOKIE["Posted"]; setcookie("Posted","",1);}  else {echo "<br/> Non email";}?></p>
-                <!--<ul class="list-unstyled">
-                    <li>Bootstrap v3.3.6</li>
-                    <li>jQuery v1.11.1</li>
-                </ul>-->
+                <p class="lead">And it has STUFF! <?php if(isset($_COOKIE["Posted"])){echo "<br/> This was posted: ".$_COOKIE["Posted"]; setcookie("Posted","",1);}  else {echo "<br/> Non email";}?></p>
             </div>
-        </div>
+        </div>-->
         <!-- /.row -->
         
         <div class="row">
-            <div class="col-lg-2"></div>
+            <div class="col-lg-1"></div>
             
-             <div class="col-lg-3">
-                <form action="notify.php" method="post">
+             <div class="col-lg-4">
+                <form id="formNotify" action="notify.php" method="post" class="form-horizontal">
                     <fieldset>
-                        <h3>Notification</h3>
-                        <label>Email</label><br/>
-                        <input name="email" placeholder="EX: email@domain.com" type="email"/>
-                        <br/>
-                        <label>Message</label><br/>
-                        <textarea name="message" style="max-width: 100%">Your computer is ready for pickup</textarea>
-                        <br/>
-                        <button type="submit" class="btn btn-primary">Notify</button>
+                        <legend>Notification</legend>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="messageArea" class="col-lg-2 control-label">Message</label>
+                            <div class="col-lg-10">
+                                <textarea name="message" class="form-control" rows="3" id="messageArea">Your computer is ready for pickup</textarea>
+                                <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+                            </div>
+                        </div>
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="reset" class="btn btn-default">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Notify</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <br/>
+                <form id="announceForm" action="notify.php" method="post" class="form-horizontal">
+                    <fieldset>
+                        <legend>Announcement</legend>
+                        <div class="form-group">
+                            <label for="announceArea" class="col-lg-2 control-label">Message</label>
+                            <div class="col-lg-10">
+                                <textarea name="annouce" class="form-control" rows="3" id="announceArea" placeholder="Annoucement to all users"></textarea>
+                                <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+                            </div>
+                        </div>
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="reset" class="btn btn-default">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Announce</button>
+                        </div>
                     </fieldset>
                 </form>
             </div>
-            <div class="col-lg-2"></div>
-            <div id="faqBox" class="col-lg-4 text-center well">
+            <div class="col-lg-6">
                 <form action="faq.php" method="post">
-                    <label>Question</label><br/>
-                    <input name="question" placeholder="Question to ask"/>
-                    <br/>
-                    <label>Answer</label><br/>
-                    <input name="answer" placeholder="Answer to question"/>
-                    <br/>
-                    <button type="submit" class="btn btn-primary">Add Q&A</button>
-                </form>
-            </div>
-        </div>
-        <!-- /.row -->
-        
-        <div class="row">
-            <div class="col-lg-2"></div>
-            
-             <div class="col-lg-3">
-                <form action="notify.php" method="post">
                     <fieldset>
-                        <h3>Announcement</h3>
-                        <label>Message</label><br/>
-                        <textarea name="message" style="max-width: 100%">Your computer is ready for pickup</textarea>
-                        <br/>
-                        <button type="submit" class="btn btn-primary">Notify</button>
+                        <legend>Notification</legend>
+                        <div class="half-width">
+                            <div class="form-group">
+                                <label for="inputQuestion" class="col-lg-2 control-label">Question</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputQuestion" placeholder="Question">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="answerArea" class="col-lg-2 control-label">Message</label>
+                                <div class="col-lg-10">
+                                    <textarea name="answer" class="form-control" rows="3" id="answerArea">Your computer is ready for pickup</textarea>
+                                    <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Add Q&A</button>
+                            </div>
+                        </div>
+                        <div class="half-width">
+                           
+                        </div>
+                        
                     </fieldset>
                 </form>
+                <br/>
+                <div id="faqBox" class="well">
+                    
+                </div>
             </div>
         </div>
         <!-- /.row -->
