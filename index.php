@@ -135,7 +135,7 @@ session_start();
             <div class="col-lg-6">
                 <form action="faq.php" method="post">
                     <fieldset>
-                        <legend>Notification</legend>
+                        <legend>Questions and Answers</legend>
                         <div class="half-width">
                             <div class="form-group">
                                 <label for="inputQuestion" class="col-lg-2 control-label">Question</label>
