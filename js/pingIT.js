@@ -1,5 +1,7 @@
 $(document).ready(function (){
     $("#categoryRmForm").submit(function (event){
+        event.preventDefault();
+        
         var form = this;
         $("#rmCatButton").toggleClass("hidden");
         
