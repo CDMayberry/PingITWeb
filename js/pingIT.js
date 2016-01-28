@@ -1,14 +1,20 @@
 $(document).ready(function (){
-    $("#rmCatButton").on("click", function (){
+    $("#categoryRmForm").submit(function (event){
+        var form = this;
+        $("#rmCatButton").toggleClass("hidden");
+        
         var timer = setTimeout(function(){
-            $("#cnlCatButton").toggleClass("hidden");
+            $("#cnlCatButton").addClass("hidden");
             $("#cnlCatButton").off();
+            $("#rmCatButton").removeClass("hidden");
+            form.submit();
         },2000);
         
-        $("#cnlCatButton").toggleClass("hidden");
+        $("#cnlCatButton").removeClass("hidden");
         $("#cnlCatButton").one("click",function(){
-            $("#cnlCatButton").toggleClass("hidden");
             clearTimeout(timer);
+            $("#cnlCatButton").addClass("hidden");
+            $("#rmCatButton").removeClass("hidden");
         });
     })
 });
