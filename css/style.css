@@ -15,3 +15,9 @@ textarea {
 .half-width {
     width: 50%;
 }
+
+#inputCategory {
+    width: 75%;
+    margin-right: 5%;
+    display: inline;
+}
