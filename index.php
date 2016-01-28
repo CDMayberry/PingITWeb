@@ -144,6 +144,22 @@ session_start();
                         </div>
                     </fieldset>
                 </form>
+                <br/>
+                <form id="categoryRmForm" action="announce.php" method="post" class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <!--<label for="inputCategory" class="col-lg-2 control-label"></label>-->
+                            <div class="col-lg-10">
+                                <select class="form-control" id="selectCategory">
+                                    <option>1: Should be PHP</option>
+                                    <option>2: Definitely PHP</option>
+                                    <option>3: Whatever</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary">Remove</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
                 
             </div>
             <div class="col-lg-6">
