@@ -139,11 +139,8 @@ session_start();
                             <label for="inputCategory" class="col-lg-2 control-label">Add Category</label>
                             <div class="col-lg-10">
                                 <input type="text" class="form-control" id="inputCategory" placeholder="New Category">
+                                <button type="submit" class="btn btn-primary">Add</button>
                             </div>
-                        </div>
-                        <div class="col-lg-10 col-lg-offset-2">
-                            <button type="reset" class="btn btn-default">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </fieldset>
                 </form>
