@@ -10,7 +10,7 @@ $(document).ready(function (){
             $("#cnlCatButton").off();
             $("#rmCatButton").removeClass("hidden");
             form.submit();
-        },2000);
+        },1000);
         
         $("#cnlCatButton").removeClass("hidden");
         $("#cnlCatButton").one("click",function(){
