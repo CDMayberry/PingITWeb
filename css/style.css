@@ -21,3 +21,9 @@ textarea {
     margin-right: 5%;
     display: inline;
 }
+
+#selectCategory {
+    width: 75%;
+    margin-right: 5%;
+    display: inline;
+}

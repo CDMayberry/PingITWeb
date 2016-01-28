@@ -155,8 +155,8 @@ session_start();
                                     <option>2: Definitely PHP</option>
                                     <option>3: Whatever</option>
                                 </select>
-                                <button id="rmCatButton" class="btn btn-primary">Remove</button>
-                                <button id="cnlCatButton" class="btn btn-primary hidden">Cancel</button>
+                                <button type="reset" id="rmCatButton" class="btn btn-primary">Remove</button>
+                                <button type="reset" id="cnlCatButton" class="btn btn-primary hidden">Cancel</button>
                             </div>
                         </div>
                     </fieldset>
