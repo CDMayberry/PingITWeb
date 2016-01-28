@@ -6,19 +6,19 @@ $(document).ready(function (){
         $("#rmCatButton").toggleClass("hidden");
         
         var timer = setTimeout(function(){
-            $("#cnlCatButton").addClass("hidden");
             $("#cnlCatButton").off();
-            $("#rmCatButton").removeClass("hidden");
+            /* If AJAX */
+            // $("#cnlCatButton").addClass("hidden");
+            // $("#rmCatButton").removeClass("hidden");
+            
             form.submit();
         },1000);
         
         $("#cnlCatButton").removeClass("hidden");
         $("#cnlCatButton").one("click",function(){
             clearTimeout(timer);
-            
-            /* If AJAX */
-            //$("#cnlCatButton").addClass("hidden");
-            //$("#rmCatButton").removeClass("hidden");
+            $("#cnlCatButton").addClass("hidden");
+            $("#rmCatButton").removeClass("hidden");
         });
     })
 });
