@@ -136,7 +136,7 @@ session_start();
                     <fieldset>
                         <legend>Category</legend>
                         <div class="form-group">
-                            <label for="inputCategory" class="col-lg-2 control-label">Add Category</label>
+                            <!--<label for="inputCategory" class="col-lg-2 control-label"></label>-->
                             <div class="col-lg-10">
                                 <input type="text" class="form-control" id="inputCategory" placeholder="New Category">
                                 <button type="submit" class="btn btn-primary">Add</button>
