@@ -50,15 +50,9 @@ session_start();
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <!--<li>
                         <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+                    </li>-->
                 </ul>
                 <ul class='nav navbar-nav navbar-right'>
                     <?php 
@@ -104,7 +98,7 @@ session_start();
                         <div class="form-group">
                             <label for="messageArea" class="col-lg-2 control-label">Message</label>
                             <div class="col-lg-10">
-                                <textarea name="message" class="form-control" rows="3" id="messageArea">Your computer is ready for pickup</textarea>
+                                <textarea name="message" class="form-control" rows="3" id="messageArea">Your computer is ready for pickup.</textarea>
                                 <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
                             </div>
                         </div>
@@ -169,15 +163,15 @@ session_start();
                         <legend>Questions and Answers</legend>
                         <div class="half-width">
                             <div class="form-group">
-                                <label for="inputQuestion" class="col-lg-2 control-label">Question</label>
+                                <label for="inputQuestion" class="col-lg-2 control-label">Q:</label>
                                 <div class="col-lg-10">
                                     <input type="text" class="form-control" id="inputQuestion" placeholder="Question">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="answerArea" class="col-lg-2 control-label">Message</label>
+                                <label for="answerArea" class="col-lg-2 control-label">A:</label>
                                 <div class="col-lg-10">
-                                    <textarea name="answer" class="form-control" rows="3" id="answerArea"></textarea>
+                                    <textarea name="answer" class="form-control" rows="3" id="answerArea" placeholder="Answer"></textarea>
                                     <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
                                 </div>
                             </div>
