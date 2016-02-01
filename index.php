@@ -2,6 +2,10 @@
 // Start the session
 session_start();
 
+require 'vendor/autoload.php';
+
+//ParseClient::initialize( $app_id, $rest_key, $master_key );
+
 ?>
 
 <!DOCTYPE html>
@@ -151,6 +155,7 @@ session_start();
                             <!--<label for="inputCategory" class="col-lg-2 control-label"></label>-->
                             <div class="col-lg-10">
                                 <select class="form-control" id="selectCategory">
+                                    <option selected></option>
                                     <option>1: Should be PHP</option>
                                     <option>2: Definitely PHP</option>
                                     <option>3: Whatever</option>
