@@ -46,6 +46,9 @@ if(isset($_POST["username"])) {
         }
     }
 }
+else {
+    setcookie("loginError","Failed to login");
+}
 
 header("Location: index.php"); /* Redirect browser */
 exit();
