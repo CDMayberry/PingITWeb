@@ -30,8 +30,10 @@ $user = new ParseUser();
 
 if(isset($_POST["username"])) {
     
+    setcookie("Test1","A Test Cookie", 15);
     if($_POST["username"] != "") {
         $_SESSION["username"] = $_POST["username"];
+        setcookie("Test2","A Test Cookie", 15);
     }
     else if(false) {
         // set session storage
@@ -48,6 +50,7 @@ if(isset($_POST["username"])) {
 }
 else {
     setcookie("loginError","Failed to login");
+    setcookie("Test3","A Test Cookie", 15);
 }
 
 header("Location: index.php"); /* Redirect browser */
