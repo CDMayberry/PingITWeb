@@ -228,7 +228,7 @@ if(isset($_COOKIE["loginError"])) {
         <div class="row">
              <div class="col-lg-12 text-center">
                 <h1>Please login to use PingIT web interface</h1>
-                <?php if(isset($_COOKIE["Test"]) { echo "<b>". }) ?>
+                <?php if(isset($_COOKIE["Test"])) { echo "<b>".$_COOKIE["Test"]."</b>"; } ?>
             </div>
         </div>
         <!-- /.row -->
