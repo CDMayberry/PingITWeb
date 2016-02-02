@@ -250,7 +250,7 @@ if(isset($_COOKIE["loginError"])) {
                     </div>
                     <div class="modal-body">
                         <fieldset>
-                            <div class="form-group <?php if($loginError){ echo "has-error"; } ?>">
+                            <div class="form-group <?php if($loginError){ echo "has-error"; } ?>" style="height: 1em;">
                                 <label for="loginName" class="col-lg-2 control-label">Username</label>
                                 <div class="col-lg-8">
                                     <input type="text" class="form-control" id="loginName" name="username">
