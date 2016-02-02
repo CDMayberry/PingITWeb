@@ -38,10 +38,10 @@ if(isset($_POST["username"])) {
         ParseClient::setStorage( new ParseSessionStorage() );
 
         try {
-        $user = ParseUser::logIn($_POST["username"], $_POST["password"]);
-        // Do stuff after successful login.
+            $user = ParseUser::logIn($_POST["username"], $_POST["password"]);
+            // Do stuff after successful login.
         } catch (ParseException $error) {
-        // The login failed. Check error to see why.
+            // The login failed. Check error to see why.
             setcookie("loginError","Failed to login");
         }
     }

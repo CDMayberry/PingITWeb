@@ -26,6 +26,13 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 // [!] Set session storage
 ParseClient::setStorage( new ParseSessionStorage() );
 
+$loginError = "";
+
+if(isset($_COOKIE["loginError"])) {
+    setcookie("loginError","",1);
+    $loginError = "";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -229,40 +236,44 @@ ParseClient::setStorage( new ParseSessionStorage() );
     </div>
     <!-- /.container -->
     
+    <?php if(!isset($_SESSION["username"])) : ?>
     <!-- Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form action="login.php" method="post">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="loginModalLabel">Login</h4>
-                </div>
-                <div class="modal-body">
-                    <fieldset>
-                        <div class="form-group">
-                            <label for="loginName" class="col-lg-2 control-label">Username</label>
-                            <div class="col-lg-8">
-                                <input type="text" class="form-control" id="loginName">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="login.php" method="post">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="loginModalLabel">Login</h4>
+                        <?php if($loginError != "") { echo "<b style='color: red;'>Incorrect login details</b>"; } ?>
+                    </div>
+                    <div class="modal-body">
+                        <fieldset>
+                            <div class="form-group <?php echo "has-error"; ?>">
+                                <label for="loginName" class="col-lg-2 control-label">Username</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="loginName">
+                                </div>
                             </div>
-                        </div>
-                        <br/>
-                        <div class="form-group">
-                            <label for="loginPass" class="col-lg-2 control-label">Password</label>
-                            <div class="col-lg-8">
-                                <input type="text" class="form-control" id="loginPass">
+                            <br/>
+                            <div class="form-group">
+                                <label for="loginPass" class="col-lg-2 control-label">Password</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="loginPass">
+                                </div>
                             </div>
-                        </div>
-                    </fieldset>
-                </div>
-                <div class="modal-footer">
-                    <button type="reset" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    </div>
+    
+    <?php endif; ?>
 
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
