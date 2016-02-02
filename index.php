@@ -26,11 +26,11 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 // [!] Set session storage
 ParseClient::setStorage( new ParseSessionStorage() );
 
-$loginError = "";
+$loginError = FALSE;
 
 if(isset($_COOKIE["loginError"])) {
     setcookie("loginError","",1);
-    $loginError = "";
+    $loginError = TRUE;
 }
 
 ?>
@@ -245,11 +245,11 @@ if(isset($_COOKIE["loginError"])) {
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="loginModalLabel">Login</h4>
-                        <?php if($loginError != "") { echo "<b style='color: red;'>Incorrect login details</b>"; } ?>
+                        <?php if($loginError) { echo "<b style='color: red;'>Incorrect login details</b>"; } ?>
                     </div>
                     <div class="modal-body">
                         <fieldset>
-                            <div class="form-group <?php echo "has-error"; ?>">
+                            <div class="form-group <?php if($loginError){ echo "has-error"; } ?>">
                                 <label for="loginName" class="col-lg-2 control-label">Username</label>
                                 <div class="col-lg-8">
                                     <input type="text" class="form-control" id="loginName">
