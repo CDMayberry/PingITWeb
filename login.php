@@ -14,7 +14,7 @@ use Parse\ParseCloud;
 use Parse\ParseClient;
 use Parse\ParseSessionStorage;
 
-//Start session MUST be between autoload and intialization.
+/* Start session MUST be between autoload and intialization. */
 session_start();
 
 $app_id = "kddcodGlyJ6DmGI7FihXt8BsXyOTS09Dgpj8UA49";
@@ -22,6 +22,8 @@ $rest_key = "ryU6g6D37JtDqIAnPbTq4SLNmihEIy8kSNPZxlhj";
 $master_key = "Fm9X40ewplSIEDTOmYxVdCEN7ge31vgfFwScYr3y";
 
 ParseClient::initialize( $app_id, $rest_key, $master_key );
+
+/* Backup logout info goes here  */
 // if(isset($_SESSION["username"])) {
 //     unset($_SESSION["username"]);
 // }
@@ -29,14 +31,12 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 $user = new ParseUser();
 
 if(isset($_POST["username"])) {
-    
-    //setcookie("Test","Username exists", 15);
     if($_POST["username"] != "") {
         $_SESSION["username"] = $_POST["username"];
-        //setcookie("Test","Username set", 15);
     }
-    else if(false) {
-        // set session storage
+    else if(false) { //Will replace first if
+    
+        /* set session storage */
         ParseClient::setStorage( new ParseSessionStorage() );
 
         try {
@@ -52,7 +52,6 @@ if(isset($_POST["username"])) {
 }
 else {
     setcookie("loginError","Failed to login");
-    //setcookie("Test","No username found", 15);
 }
 
 header("Location: index.php"); /* Redirect browser */
