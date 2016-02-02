@@ -256,7 +256,7 @@ if(isset($_COOKIE["loginError"])) {
                                 </div>
                             </div>
                             <br/>
-                            <div class="form-group">
+                            <div class="form-group <?php if($loginError){ echo "has-error"; } ?>">
                                 <label for="loginPass" class="col-lg-2 control-label">Password</label>
                                 <div class="col-lg-8">
                                     <input type="text" class="form-control" id="loginPass">
@@ -283,6 +283,16 @@ if(isset($_COOKIE["loginError"])) {
     
     <!-- Bootstrap Core JavaScript -->
     <script src="js/pingIT.js"></script>
+       
+    <?php if($loginError) : ?>
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#loginModal").modal('show');
+    })
+    </script>
+    
+    <?php endif; ?>
 
 </body>
 
