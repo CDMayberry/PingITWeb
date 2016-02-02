@@ -46,6 +46,8 @@ if(isset($_POST["username"])) {
             // The login failed. Check error to see why.
             setcookie("loginError","Failed to login");
         }
+    } else {
+        setcookie("loginError","Failed to login");
     }
 }
 else {
