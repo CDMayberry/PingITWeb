@@ -228,6 +228,7 @@ if(isset($_COOKIE["loginError"])) {
         <div class="row">
              <div class="col-lg-12 text-center">
                 <h1>Please login to use PingIT web interface</h1>
+                <?php if(isset($_COOKIE["Test"]) { echo "<b>". }) ?>
             </div>
         </div>
         <!-- /.row -->
@@ -252,14 +253,14 @@ if(isset($_COOKIE["loginError"])) {
                             <div class="form-group <?php if($loginError){ echo "has-error"; } ?>">
                                 <label for="loginName" class="col-lg-2 control-label">Username</label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="loginName">
+                                    <input type="text" class="form-control" id="loginName" name="username">
                                 </div>
                             </div>
                             <br/>
                             <div class="form-group <?php if($loginError){ echo "has-error"; } ?>">
                                 <label for="loginPass" class="col-lg-2 control-label">Password</label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="loginPass">
+                                    <input type="text" class="form-control" id="loginPass" name="password">
                                 </div>
                             </div>
                         </fieldset>
