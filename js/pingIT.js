@@ -21,4 +21,5 @@ $(document).ready(function (){
             $("#rmCatButton").removeClass("hidden");
         });
     })
+    
 });

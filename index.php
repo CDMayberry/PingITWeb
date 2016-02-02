@@ -1,10 +1,30 @@
 <?php
+
+require 'vendor/autoload.php';
+use Parse\ParseObject;
+use Parse\ParseQuery;
+use Parse\ParseACL;
+use Parse\ParsePush;
+use Parse\ParseUser;
+use Parse\ParseInstallation;
+use Parse\ParseException;
+use Parse\ParseAnalytics;
+use Parse\ParseFile;
+use Parse\ParseCloud;
+use Parse\ParseClient;
+use Parse\ParseSessionStorage;
+
 // Start the session
 session_start();
 
-require 'vendor/autoload.php';
+$app_id = "kddcodGlyJ6DmGI7FihXt8BsXyOTS09Dgpj8UA49";
+$rest_key = "ryU6g6D37JtDqIAnPbTq4SLNmihEIy8kSNPZxlhj";
+$master_key = "Fm9X40ewplSIEDTOmYxVdCEN7ge31vgfFwScYr3y";
 
-//ParseClient::initialize( $app_id, $rest_key, $master_key );
+ParseClient::initialize( $app_id, $rest_key, $master_key );
+
+// [!] Set session storage
+ParseClient::setStorage( new ParseSessionStorage() );
 
 ?>
 
@@ -61,11 +81,11 @@ require 'vendor/autoload.php';
                 <ul class='nav navbar-nav navbar-right'>
                     <?php 
                     if(!isset($_SESSION["username"])) {
-                        echo "<li><a id='loginUser' href='#'>Login</a></li>";
+                        echo "<li><a id='loginUser' href='#' data-toggle='modal' data-target='#loginModal'>Login</a></li>";
                     }
                     else {
-                        echo "<li>"+$_SESSION["username"]+"</li>";
-                        echo "<li><a id='logoutUser' href='#'>Logout</a></li>";
+                        echo "<li><a href='#'>".$_SESSION["username"]."</a></li>";
+                        echo "<li><a id='logoutUser' href='logout.php'>Logout</a></li>";
                     }
                     ?>
                 </ul>
@@ -77,7 +97,7 @@ require 'vendor/autoload.php';
 
     <!-- Page Content -->
     <div class="container">
-        <?php if(!isset($_SESSION["username"])) : ?>
+        <?php if(isset($_SESSION["username"])) : ?>
         <!--<div class="row">
             <div class="col-lg-12 text-center">
                 <h1>The start of PingIT: IT HAS BEGUN</h1>
@@ -208,6 +228,41 @@ require 'vendor/autoload.php';
 
     </div>
     <!-- /.container -->
+    
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="login.php" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="loginModalLabel">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="loginName" class="col-lg-2 control-label">Username</label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="loginName">
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <label for="loginPass" class="col-lg-2 control-label">Password</label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="loginPass">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
 
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
