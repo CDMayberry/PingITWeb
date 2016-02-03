@@ -30,6 +30,9 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 
 $user = new ParseUser();
 
+header("Location: index.php"); /* Redirect browser */
+exit();
+
 if(isset($_POST["username"])) {
     
     
@@ -57,7 +60,5 @@ else {
     setcookie("loginError","Failed to login");
 }
 
-header("Location: index.php"); /* Redirect browser */
-exit();
 
 ?>

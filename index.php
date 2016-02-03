@@ -27,10 +27,16 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 ParseClient::setStorage( new ParseSessionStorage() );
 
 $loginError = FALSE;
+$regError = FALSE;
 
 if(isset($_COOKIE["loginError"])) {
     setcookie("loginError","",1);
     $loginError = TRUE;
+}
+
+if(isset($_COOKIE["regError"])) {
+    setcookie("regError","",1);
+    $regError = TRUE;
 }
 
 ?>
@@ -89,6 +95,7 @@ if(isset($_COOKIE["loginError"])) {
                     <?php 
                     if(!isset($_SESSION["username"])) {
                         echo "<li><a id='loginUser' href='#' data-toggle='modal' data-target='#loginModal'>Login</a></li>";
+                        echo "<li><a id='regUser' href='#' data-toggle='modal' data-target='#registerModal'>Register</a></li>";
                     }
                     else {
                         echo "<li><a href='#'>".$_SESSION["username"]."</a></li>";
@@ -242,7 +249,7 @@ if(isset($_COOKIE["loginError"])) {
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="login.php" method="post">
+                <form class="form-horizontal" action="login.php" method="post">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="loginModalLabel">Login</h4>
@@ -250,24 +257,63 @@ if(isset($_COOKIE["loginError"])) {
                     </div>
                     <div class="modal-body">
                         <fieldset>
-                            <div class="form-group <?php if($loginError){ echo "has-error"; } ?>" style="height: 1em;">
+                            <div class="form-group <?php if($loginError){ echo "has-error"; } ?>">
                                 <label for="loginName" class="col-lg-2 control-label">Username</label>
                                 <div class="col-lg-8">
                                     <input type="text" class="form-control" id="loginName" name="username">
                                 </div>
                             </div>
-                            <br/>
                             <div class="form-group <?php if($loginError){ echo "has-error"; } ?>">
                                 <label for="loginPass" class="col-lg-2 control-label">Password</label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="loginPass" name="password">
+                                    <input type="password" class="form-control" id="loginPass" name="password">
                                 </div>
                             </div>
                         </fieldset>
                     </div>
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" action="register.php" method="post">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="loginModalLabel">Register</h4>
+                        <?php if($regError) { echo "<b style='color: red;'>Incorrect login details</b>"; } ?>
+                    </div>
+                    <div class="modal-body">
+                        <fieldset>
+                            <div class="form-group <?php if($regError){ echo "has-error"; } ?>">
+                                <label for="regName" class="col-lg-2 control-label">Username</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="regName" name="username">
+                                </div>
+                            </div>
+                            <div class="form-group <?php if($regError){ echo "has-error"; } ?>">
+                                <label for="regPass" class="col-lg-2 control-label">Password</label>
+                                <div class="col-lg-8">
+                                    <input type="password" class="form-control" id="regPass" name="password">
+                                </div>
+                            </div>
+                            <div id="passConfirm" class="form-group <?php if($loginError){ echo "has-error"; } ?>">
+                                <label for="confPass" class="col-lg-2 control-label">Confirm</label>
+                                <div class="col-lg-8">
+                                    <input type="password" class="form-control" id="confPass" name="confPass">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Register</button>
                     </div>
                 </form>
             </div>
@@ -284,13 +330,32 @@ if(isset($_COOKIE["loginError"])) {
     
     <!-- Bootstrap Core JavaScript -->
     <script src="js/pingIT.js"></script>
-       
+    
+               
     <?php if($loginError) : ?>
     
     <script type="text/javascript">
     $(document).ready(function() {
         $("#loginModal").modal('show');
     })
+    </script>
+    
+    <?php endif; ?>
+    
+    <?php if(!isset($_SESSION["username"])) : ?>
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#confPass').on('keyup', function () {
+            if ($(this).val() == $('#regPass').val()) {
+                $('#passConfirm').addClass('has-success');
+                $('#passConfirm').removeClass('has-error');
+            } else  {
+                $('#passConfirm').removeClass('has-success');
+                $('#passConfirm').addClass('has-error');
+            }
+        });
+    });
     </script>
     
     <?php endif; ?>
