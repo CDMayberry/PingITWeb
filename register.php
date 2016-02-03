@@ -34,7 +34,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] 
     ParseClient::setStorage( new ParseSessionStorage() );
 
     try {
-        $user->setUsername($_POST["username"]);
+        $user->setEmail($_POST["username"]);
         $user->setPassword($_POST["password"]);
         $user->signUp();
         
