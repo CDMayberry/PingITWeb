@@ -37,7 +37,7 @@ if(isset($_POST["username"]) && $_POST["username"] != "") {
 
     try {
         $user = ParseUser::logIn($_POST["username"], $_POST["password"]);
-        $_SESSION["username"] = $user.getUsername();
+        $_SESSION["username"] = ParseUser::getCurrentUser().getUsername();
         // Do stuff after successful login.
     } catch (ParseException $error) {
         // The login failed. Check error to see why.
