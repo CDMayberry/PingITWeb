@@ -1,5 +1,8 @@
 <?php 
 
+/* Start session MUST be between autoload and intialization. */
+session_start();
+
 require 'vendor/autoload.php';
 use Parse\ParseObject;
 use Parse\ParseQuery;
@@ -13,9 +16,6 @@ use Parse\ParseFile;
 use Parse\ParseCloud;
 use Parse\ParseClient;
 use Parse\ParseSessionStorage;
-
-/* Start session MUST be between autoload and intialization. */
-session_start();
 
 $app_id = "kddcodGlyJ6DmGI7FihXt8BsXyOTS09Dgpj8UA49";
 $rest_key = "ryU6g6D37JtDqIAnPbTq4SLNmihEIy8kSNPZxlhj";
