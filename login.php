@@ -28,8 +28,6 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 //     unset($_SESSION["username"]);
 // }
 
-
-
 $user = new ParseUser();
 
 if(isset($_POST["username"]) && $_POST["username"] != "") {

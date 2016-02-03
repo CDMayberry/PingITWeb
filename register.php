@@ -26,9 +26,6 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 //     unset($_SESSION["username"]);
 // }
 
-header("Location: index.php"); /* Redirect browser */
-exit();
-
 $user = new ParseUser();
 
 if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] != "" && $_POST["password"] != "") {
