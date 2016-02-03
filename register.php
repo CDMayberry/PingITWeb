@@ -31,13 +31,16 @@ exit();
 
 $user = new ParseUser();
 
-if(isset($_POST["username"]) && $_POST["username"] != "") {
+if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] != "" && $_POST["password"] != "") {
     
     /* set session storage */
     ParseClient::setStorage( new ParseSessionStorage() );
 
     try {
+        $user->setUsername($_POST["username"]);
+        $user->setPassword($_POST["password"]);
         $user->signUp();
+        $_SESSION["username"] = $user.getUsername();
     } catch (ParseException $ex) {
         // error in $ex->getMessage();
         setcookie("regError","Failed to login");
