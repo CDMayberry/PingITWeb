@@ -28,31 +28,23 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 //     unset($_SESSION["username"]);
 // }
 
+
+
 $user = new ParseUser();
 
-if(isset($_POST["username"])) {
+if(isset($_POST["username"]) && $_POST["username"] != "") {
     
-    
-    
-    if($_POST["username"] != "") {
-        $_SESSION["username"] = $_POST["username"];
-    }
-    else if(false) { //Will replace first if
-    
-        /* set session storage */
-        ParseClient::setStorage( new ParseSessionStorage() );
+    /* set session storage */
+    ParseClient::setStorage( new ParseSessionStorage() );
 
-        try {
-            $user = ParseUser::logIn($_POST["username"], $_POST["password"]);
-            // Do stuff after successful login.
-        } catch (ParseException $error) {
-            // The login failed. Check error to see why.
-            setcookie("loginError","Failed to login");
-        }
-    } else {
+    try {
+        $user = ParseUser::logIn($_POST["username"], $_POST["password"]);
+        // Do stuff after successful login.
+    } catch (ParseException $error) {
+        // The login failed. Check error to see why.
         setcookie("loginError","Failed to login");
     }
-}
+} 
 else {
     setcookie("loginError","Failed to login");
 }

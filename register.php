@@ -6,9 +6,7 @@ use Parse\ParseQuery;
 use Parse\ParseACL;
 use Parse\ParsePush;
 use Parse\ParseUser;
-use Parse\ParseInstallation;
 use Parse\ParseException;
-use Parse\ParseAnalytics;
 use Parse\ParseFile;
 use Parse\ParseCloud;
 use Parse\ParseClient;
@@ -28,37 +26,28 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 //     unset($_SESSION["username"]);
 // }
 
-$user = new ParseUser();
-
 header("Location: index.php"); /* Redirect browser */
 exit();
 
-if(isset($_POST["username"])) {
-    
-    
-    
-    if($_POST["username"] != "") {
-        $_SESSION["username"] = $_POST["username"];
-    }
-    else if(false) { //Will replace first if
-    
-        /* set session storage */
-        ParseClient::setStorage( new ParseSessionStorage() );
+$user = new ParseUser();
 
-        try {
-            $user = ParseUser::logIn($_POST["username"], $_POST["password"]);
-            // Do stuff after successful login.
-        } catch (ParseException $error) {
-            // The login failed. Check error to see why.
-            setcookie("loginError","Failed to login");
-        }
-    } else {
-        setcookie("loginError","Failed to login");
+if(isset($_POST["username"]) && $_POST["username"] != "") {
+    
+    /* set session storage */
+    ParseClient::setStorage( new ParseSessionStorage() );
+
+    try {
+        $user->signUp();
+    } catch (ParseException $ex) {
+        // error in $ex->getMessage();
+        setcookie("regError","Failed to login");
     }
-}
+} 
 else {
-    setcookie("loginError","Failed to login");
+    setcookie("regError","Failed to login");
 }
 
+header("Location: index.php"); /* Redirect browser */
+exit();
 
 ?>
