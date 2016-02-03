@@ -37,7 +37,8 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] 
         $user->setUsername($_POST["username"]);
         $user->setPassword($_POST["password"]);
         $user->signUp();
-        $_SESSION["username"] = $user.getUsername();
+        
+        $_SESSION["username"] = ParseUser::getCurrentUser().getUsername();
     } catch (ParseException $ex) {
         // error in $ex->getMessage();
         setcookie("regError","Failed to login");
