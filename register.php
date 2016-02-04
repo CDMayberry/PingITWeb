@@ -30,22 +30,25 @@ $user = new ParseUser();
 
 if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] != "" && $_POST["password"] != "") {
     
+    $username = explode("@",($_POST["username"]));
+    
     /* set session storage */
     ParseClient::setStorage( new ParseSessionStorage() );
 
     try {
+        $user->setUsername($username[0]);
         $user->setEmail($_POST["username"]);
         $user->setPassword($_POST["password"]);
         $user->signUp();
         
-        $_SESSION["username"] = ParseUser::getCurrentUser().getUsername();
+        $_SESSION["username"] = ParseUser::getCurrentUser()->get("username");
     } catch (ParseException $ex) {
         // error in $ex->getMessage();
-        setcookie("regError","Failed to login");
+        setcookie("regError",$ex->getMessage());
     }
 } 
 else {
-    setcookie("regError","Failed to login");
+    setcookie("regError","A Username and Password is required");
 }
 
 header("Location: index.php"); /* Redirect browser */

@@ -1,8 +1,5 @@
 <?php
 
-// Start the session
-session_start();
-
 require 'vendor/autoload.php';
 use Parse\ParseObject;
 use Parse\ParseQuery;
@@ -17,6 +14,9 @@ use Parse\ParseCloud;
 use Parse\ParseClient;
 use Parse\ParseSessionStorage;
 
+// Start the session
+session_start();
+
 $app_id = "kddcodGlyJ6DmGI7FihXt8BsXyOTS09Dgpj8UA49";
 $rest_key = "ryU6g6D37JtDqIAnPbTq4SLNmihEIy8kSNPZxlhj";
 $master_key = "Fm9X40ewplSIEDTOmYxVdCEN7ge31vgfFwScYr3y";
@@ -24,7 +24,7 @@ $master_key = "Fm9X40ewplSIEDTOmYxVdCEN7ge31vgfFwScYr3y";
 ParseClient::initialize( $app_id, $rest_key, $master_key );
 
 // [!] Set session storage
-ParseClient::setStorage( new ParseSessionStorage() );
+//ParseClient::setStorage( new ParseSessionStorage() );
 
 $loginError = FALSE;
 $regError = FALSE;
@@ -37,6 +37,17 @@ if(isset($_COOKIE["loginError"])) {
 if(isset($_COOKIE["regError"])) {
     setcookie("regError","",1);
     $regError = TRUE;
+}
+
+$parseUser;
+
+if(ParseUser::getCurrentUser() !== NULL) {
+    //echo "<pre>";
+    //print_r(ParseUser::getCurrentUser());
+    //echo "</pre>";
+    $parseUser = ParseUser::getCurrentUser();
+  
+    $_SESSION["username"] = $parseUser->get("username");
 }
 
 ?>
@@ -224,7 +235,7 @@ if(isset($_COOKIE["regError"])) {
                     </fieldset>
                 </form>
                 <br/>
-                <div id="faqBox" class="well">
+                <div id="faqBox" class="well" style="overflow-y: scroll">
                     <?php include "faqPartial.php"; ?>
                 </div>
             </div>
@@ -253,7 +264,7 @@ if(isset($_COOKIE["regError"])) {
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="loginModalLabel">Login</h4>
-                        <?php if($loginError) { echo "<b style='color: red;'>Incorrect login details</b>"; } ?>
+                        <?php if($loginError) { echo "<b style='color: red;'>".$_COOKIE["loginError"]."</b>"; } ?>
                     </div>
                     <div class="modal-body">
                         <fieldset>
@@ -287,7 +298,7 @@ if(isset($_COOKIE["regError"])) {
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="loginModalLabel">Register</h4>
-                        <?php if($regError) { echo "<b style='color: red;'>Incorrect login details</b>"; } ?>
+                        <?php if($regError) { echo "<b style='color: red;'>".$_COOKIE["regError"]."</b>"; } ?>
                     </div>
                     <div class="modal-body">
                         <fieldset>
@@ -337,6 +348,16 @@ if(isset($_COOKIE["regError"])) {
     <script type="text/javascript">
     $(document).ready(function() {
         $("#loginModal").modal('show');
+    })
+    </script>
+    
+    <?php endif; ?>
+    
+    <?php if($regError) : ?>
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#registerModal").modal('show');
     })
     </script>
     
