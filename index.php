@@ -175,29 +175,35 @@ if(ParseUser::getCurrentUser() !== NULL) {
                     </fieldset>
                 </form>
                 <br/>
-                <form id="categoryForm" action="announce.php" method="post" class="form-horizontal">
+                <form id="categoryForm" action="addCategory.php" method="post" class="form-horizontal">
                     <fieldset>
                         <legend>Category</legend>
                         <div class="form-group">
                             <!--<label for="inputCategory" class="col-lg-2 control-label"></label>-->
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputCategory" placeholder="New Category">
+                                <input type="text" name="category" class="form-control" id="inputCategory" placeholder="New Category">
                                 <button type="submit" class="btn btn-primary">Add</button>
                             </div>
                         </div>
                     </fieldset>
                 </form>
                 <br/>
-                <form id="categoryRmForm" action="announce.php" method="post" class="form-horizontal">
+                <form id="categoryRmForm" action="rmvCategory.php" method="post" class="form-horizontal">
                     <fieldset>
                         <div class="form-group">
                             <!--<label for="inputCategory" class="col-lg-2 control-label"></label>-->
                             <div class="col-lg-10">
                                 <select class="form-control" id="selectCategory">
                                     <option selected></option>
-                                    <option>1: Should be PHP</option>
-                                    <option>2: Definitely PHP</option>
-                                    <option>3: Whatever</option>
+                                    <?php 
+                                    
+                                    $query = new ParseQuery("FAQ_Category");
+
+                                    $query->each(function($category) {                                        
+                                        echo "<option value='".$category->get("objectId")."'>".$category->get("Text")."</option>";
+                                    });
+                                    
+                                    ?>
                                 </select>
                                 <button type="submit" id="rmCatButton" class="btn btn-danger">Remove</button>
                                 <button type="reset" id="cnlCatButton" class="btn btn-primary hidden">Cancel</button>

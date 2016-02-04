@@ -43,7 +43,8 @@ try {
         $questions->getQuery()->each(function($qa) {
             echo "<li>Question: ".$qa->get("Text")."</li>";
             echo "<li>Answer: ".$qa->get("AnswerText")."</li>";
-            echo "<br/>";
+            echo "<button class='btn btn-sm btn-danger'>[Delete]</button>";
+            echo "<br/><br/>";
         });
         
         echo "</ul>";
