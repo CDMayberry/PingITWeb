@@ -18,7 +18,7 @@ $master_key = "Fm9X40ewplSIEDTOmYxVdCEN7ge31vgfFwScYr3y";
 ParseClient::initialize( $app_id, $rest_key, $master_key );
 
 if(isset($_POST["questionId"]) && $_POST["questionId"] != "") {
-    $query = new ParseQuery("FAQ_Category");
+    $query = new ParseQuery("FAQ_Question");
     try {
         $question = $query->get($_POST["questionId"]);
         
@@ -27,7 +27,11 @@ if(isset($_POST["questionId"]) && $_POST["questionId"] != "") {
     } catch (ParseException $ex) {
         // The object was not retrieved successfully.
         // error is a ParseException with an error code and message.
+        setcookie("modError",$ex->getMessage());
     }
+}
+else {
+    setcookie("modError","No QuestionId");
 }
 
 header("Location: index.php"); /* Redirect browser */

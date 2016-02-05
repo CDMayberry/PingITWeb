@@ -40,9 +40,9 @@ if(isset($_COOKIE["regError"])) {
     $regError = TRUE;
 }
 
-if(isset($_COOKIE["error"])) {
+if(isset($_COOKIE["modError"])) {
     setcookie("modError","",1);
-    $regError = TRUE;
+    $modError = TRUE;
 }
 
 $parseUser;
@@ -246,7 +246,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
                             <div class="form-group text-right">
                                 <div class="col-lg-offset-2 col-lg-10">
                                     <select name="categoryId" class="form-control" id="selectQACat">
-                                        <option style="font-color: grey" value="" disabled selected>* Select Category</option>
+                                        <option style="color: grey" value="" disabled selected>* Select A Category</option>
                                         <?php 
                                         
                                         $query = new ParseQuery("FAQ_Category");
@@ -297,7 +297,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
                     <div class="modal-body">
                         <fieldset>
                             <div class="form-group <?php if($loginError){ echo "has-error"; } ?>">
-                                <label for="loginName" class="col-lg-2 control-label">Username</label>
+                                <label for="loginName" class="col-lg-2 control-label">Email</label>
                                 <div class="col-lg-8">
                                     <input type="text" class="form-control" id="loginName" name="username">
                                 </div>
@@ -331,7 +331,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
                     <div class="modal-body">
                         <fieldset>
                             <div class="form-group <?php if($regError){ echo "has-error"; } ?>">
-                                <label for="regName" class="col-lg-2 control-label">Username</label>
+                                <label for="regName" class="col-lg-2 control-label">Email</label>
                                 <div class="col-lg-8">
                                     <input type="text" class="form-control" id="regName" name="username">
                                 </div>
@@ -359,6 +359,26 @@ if(ParseUser::getCurrentUser() !== NULL) {
         </div>
     </div>
     
+    <?php endif; ?>
+    
+    <?php if($modError) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="loginModalLabel" style="color: Red">Error</h4>
+                </div>
+                <div class="modal-body">
+                    <p><?php echo $_COOKIE["modError"]; ?></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php endif; ?>
 
     <!-- jQuery Version 1.11.1 -->
@@ -389,6 +409,14 @@ if(ParseUser::getCurrentUser() !== NULL) {
     })
     </script>
     
+    <?php endif; ?>
+    
+    <?php if($modError) : ?>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#errorModal").modal('show');
+    })
+    </script>
     <?php endif; ?>
     
     <?php if(!isset($_SESSION["username"])) : ?>

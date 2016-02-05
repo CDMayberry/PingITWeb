@@ -28,6 +28,7 @@ if(isset($_POST["category"]) && $_POST["category"] != "") {
         $category->save();
     } catch (ParseException $ex) {  
         /* Should pass back a cookie with the error $ex->getMessage() */    
+        setcookie("modError",$ex->getMessage());
     }
 }
 

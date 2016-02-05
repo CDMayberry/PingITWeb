@@ -32,13 +32,9 @@ if(isset($_POST["categoryId"]) && $_POST["categoryId"] != "") {
     } catch (ParseException $ex) {
         // The object was not retrieved successfully.
         // error is a ParseException with an error code and message.
+        setcookie("modError",$ex->getMessage());
     }
 }
-
-// if(isset($_SESSION["username"])) {
-//     unset($_SESSION["username"]);
-//     ParseUser::logOut();
-// }
 
 header("Location: index.php"); /* Redirect browser */
 exit();

@@ -47,7 +47,7 @@ try {
             echo "<input type='hidden' name='questionId' value='".$qa->getObjectId()."'>";
             echo "<button type='submit' class='btn btn-sm btn-danger'>Delete</button>";
             echo "</form>";
-            echo "<br/><br/>";
+            echo "<br/>";
         });
         
         echo "</ul>";

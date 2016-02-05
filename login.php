@@ -34,10 +34,9 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] 
     
     /* set session storage */
     ParseClient::setStorage( new ParseSessionStorage() );
-    $username = explode("@",($_POST["username"]));
 
     try {
-        $user = ParseUser::logIn($username[0], $_POST["password"]);
+        $user = ParseUser::logIn($_POST["username"], $_POST["password"]);
         $_SESSION["username"] = ParseUser::getCurrentUser()->get("username");
         // Do stuff after successful login.
     } catch (ParseException $ex) {

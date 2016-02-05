@@ -36,8 +36,17 @@ if(isset($_POST["categoryId"]) && $_POST["categoryId"] != "" && isset($_POST["qu
         // The object was retrieved successfully.
     } catch (ParseException $ex) {
         // The object was not retrieved successfully.
-        
+        setcookie("modError",$ex->getMessage());
     }
+}
+else if(!isset($_POST["categoryId"]) || $_POST["categoryId"] == "") {
+    setcookie("modError","Category not selected");
+}
+else if(!isset($_POST["question"]) || $_POST["question"] == "") {
+    setcookie("modError","Question required");
+}
+else if(!isset($_POST["answer"]) || $_POST["answer"] == "") {
+    setcookie("modError","Answer required");
 }
 
 header("Location: index.php"); /* Redirect browser */

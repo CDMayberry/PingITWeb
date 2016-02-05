@@ -30,13 +30,11 @@ $user = new ParseUser();
 
 if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] != "" && $_POST["password"] != "") {
     
-    $username = explode("@",($_POST["username"]));
-    
     /* set session storage */
     ParseClient::setStorage( new ParseSessionStorage() );
 
     try {
-        $user->setUsername($username[0]);
+        $user->setUsername($_POST["username"]);
         $user->setEmail($_POST["username"]);
         $user->setPassword($_POST["password"]);
         $user->signUp();
