@@ -43,7 +43,10 @@ try {
         $questions->getQuery()->each(function($qa) {
             echo "<li>Question: ".$qa->get("Text")."</li>";
             echo "<li>Answer: ".$qa->get("AnswerText")."</li>";
-            echo "<button class='btn btn-sm btn-danger'>[Delete]</button>";
+            echo "<form action='rmvQuestion.php' method='post'>";
+            echo "<input type='hidden' name='questionId' value='".$qa->getObjectId()."'>";
+            echo "<button type='submit' class='btn btn-sm btn-danger'>Delete</button>";
+            echo "</form>";
             echo "<br/><br/>";
         });
         
