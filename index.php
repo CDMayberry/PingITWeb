@@ -28,6 +28,7 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 
 $loginError = FALSE;
 $regError = FALSE;
+$modError = FALSE;
 
 if(isset($_COOKIE["loginError"])) {
     setcookie("loginError","",1);
@@ -36,6 +37,11 @@ if(isset($_COOKIE["loginError"])) {
 
 if(isset($_COOKIE["regError"])) {
     setcookie("regError","",1);
+    $regError = TRUE;
+}
+
+if(isset($_COOKIE["error"])) {
+    setcookie("modError","",1);
     $regError = TRUE;
 }
 
@@ -193,14 +199,14 @@ if(ParseUser::getCurrentUser() !== NULL) {
                         <div class="form-group">
                             <!--<label for="inputCategory" class="col-lg-2 control-label"></label>-->
                             <div class="col-lg-10">
-                                <select class="form-control" id="selectCategory">
+                                <select name="categoryId" class="form-control" id="selectCategory">
                                     <option selected></option>
                                     <?php 
                                     
                                     $query = new ParseQuery("FAQ_Category");
 
                                     $query->each(function($category) {                                        
-                                        echo "<option value='".$category->get("objectId")."'>".$category->get("Text")."</option>";
+                                        echo "<option value='".$category->getObjectId()."'>".$category->get("Text")."</option>";
                                     });
                                     
                                     ?>
@@ -221,23 +227,39 @@ if(ParseUser::getCurrentUser() !== NULL) {
                             <div class="form-group">
                                 <label for="inputQuestion" class="col-lg-2 control-label">Q:</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="inputQuestion" placeholder="Question">
+                                    <input type="text" class="form-control" id="inputQuestion" placeholder="Question" name="question">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="answerArea" class="col-lg-2 control-label">A:</label>
                                 <div class="col-lg-10">
-                                    <textarea name="answer" class="form-control" rows="3" id="answerArea" placeholder="Answer"></textarea>
+                                    <textarea name="answer" class="form-control" rows="3" id="answerArea" placeholder="Answer" name="answer"></textarea>
                                     <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
                                 </div>
-                            </div>
+                            </div>                       
                             <div class="col-lg-10 col-lg-offset-2">
                                 <button type="reset" class="btn btn-default">Cancel</button>
                                 <button type="submit" class="btn btn-primary">Add Q&A</button>
                             </div>
                         </div>
-                        <div class="half-width"></div>
-                        
+                        <div class="half-width">
+                            <div class="form-group text-right">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                    <select name="categoryId" class="form-control" id="selectQACat">
+                                        <option style="font-color: grey" value="" disabled selected>* Select Category</option>
+                                        <?php 
+                                        
+                                        $query = new ParseQuery("FAQ_Category");
+
+                                        $query->each(function($category) {                                        
+                                            echo "<option value='".$category->getObjectId()."'>".$category->get("Text")."</option>";
+                                        });
+                                        
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </fieldset>
                 </form>
                 <br/>
