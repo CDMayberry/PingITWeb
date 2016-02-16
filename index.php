@@ -390,6 +390,9 @@ if(ParseUser::getCurrentUser() !== NULL) {
     <!-- Bootstrap Core JavaScript -->
     <script src="js/pingIT.js"></script>
     
+    <!-- SendBird Javscript -->
+    <script src="js/SendBird.min.js"></script>
+    
                
     <?php if($loginError) : ?>
     
