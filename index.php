@@ -76,6 +76,9 @@ if(ParseUser::getCurrentUser() !== NULL) {
 
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+    
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -147,7 +150,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
                         <div class="form-group">
                             <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                                <input name="inputEmail" type="text" class="form-control" id="inputEmail" placeholder="Email">
                             </div>
                         </div>
                         <div class="form-group">
@@ -381,9 +384,6 @@ if(ParseUser::getCurrentUser() !== NULL) {
     </div>
     <?php endif; ?>
 
-    <!-- jQuery Version 1.11.1 -->
-    <script src="js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     
@@ -392,7 +392,6 @@ if(ParseUser::getCurrentUser() !== NULL) {
     
     <!-- SendBird Javscript -->
     <script src="js/SendBird.min.js"></script>
-    
                
     <?php if($loginError) : ?>
     
