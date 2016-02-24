@@ -6,6 +6,9 @@ use Parse\ParseUser;
 use Parse\ParseException;
 use Parse\ParseClient;
 use Parse\ParseSessionStorage;
+use Parse\ParseInstallation;
+use Parse\ParseQuery;
+use Parse\ParsePush;
 
 // Start the session
 session_start();
@@ -19,8 +22,38 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 if(isset($_SESSION["username"])) {
     if(isset($_POST["message"]) && $_POST["message"] != "" && isset($_POST["inputEmail"]) && $_POST["inputEmail"] != "") {
         $ping = new ParseObject("Pings");
-        $ping->set("Text",$_POST["message"]);
+        $ping->set("Title","TLC Helpdesk"); //Auto set, we change later if need be
+        $ping->set("Message",$_POST["message"]);
+        
+        
         try {
+            $query = new ParseQuery($class = '_User');
+            $query->equalTo("email", $_POST["inputEmail"]);
+            $user = $query->first();
+            //print_r($user);
+            //$ping->save();
+            //print "<br/>Test1";
+            $relation = $ping->getRelation("User");
+            //print "<br/>Test2";
+            $relation->add($user);
+            //print "<br/>Test3";
+            $ping->save();
+            //print "<br/>Test4";
+            
+            // $push = ParseInstallation::query();
+            // //print "<br/>Test5";
+            // $push->equalTo('user', $user->getObjectId());
+            // //print "<br/>Test6";
+            
+            // //print
+            
+            // ParsePush::send(array(
+            //     "where" => $push,
+            //     "data" => array(
+            //         "alert" => $_POST["message"]
+            //     )
+            // ));
+            
             //$ping->save();
         } catch (ParseException $ex) {  
             /* Should pass back a cookie with the error $ex->getMessage() */    
