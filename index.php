@@ -173,7 +173,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
                         <div class="form-group">
                             <label for="announceArea" class="col-lg-2 control-label">Message</label>
                             <div class="col-lg-10">
-                                <textarea name="annouce" class="form-control" rows="3" id="announceArea" placeholder="Annoucement to all users"></textarea>
+                                <textarea name="message" class="form-control" rows="3" id="announceArea" placeholder="Annoucement to all users"></textarea>
                                 <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
                             </div>
                         </div>
