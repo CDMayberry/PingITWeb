@@ -30,31 +30,10 @@ if(isset($_SESSION["username"])) {
             $query = new ParseQuery($class = '_User');
             $query->equalTo("email", $_POST["inputEmail"]);
             $user = $query->first();
-            //print_r($user);
-            //$ping->save();
-            //print "<br/>Test1";
             $relation = $ping->getRelation("User");
-            //print "<br/>Test2";
             $relation->add($user);
-            //print "<br/>Test3";
             $ping->save();
-            //print "<br/>Test4";
-            
-            // $push = ParseInstallation::query();
-            // //print "<br/>Test5";
-            // $push->equalTo('user', $user->getObjectId());
-            // //print "<br/>Test6";
-            
-            // //print
-            
-            // ParsePush::send(array(
-            //     "where" => $push,
-            //     "data" => array(
-            //         "alert" => $_POST["message"]
-            //     )
-            // ));
-            
-            //$ping->save();
+
         } catch (ParseException $ex) {  
             /* Should pass back a cookie with the error $ex->getMessage() */    
             setcookie("modError",$ex->getMessage());

@@ -21,22 +21,10 @@ $master_key = "Fm9X40ewplSIEDTOmYxVdCEN7ge31vgfFwScYr3y";
 ParseClient::initialize( $app_id, $rest_key, $master_key );
 
 try {
-    $query = new ParseQuery("FAQ_Category");
-
-    // Get a specific object:
-    //$object = $query->get("anObjectId");
-
-    // All results:
-    //$results = $query->find();
-
-    // Process ALL (without limit) results with "each".
-    // Will throw if sort, skip, or limit is used.
-    
+    $query = new ParseQuery("FAQ_Category");    
     $query->each(function($category) {
-        
-        
         $questions = $category->getRelation("Questions");
-        
+   
         echo "<h4>".$category->get("Text")."</h4>";
         echo "<ul>";
         

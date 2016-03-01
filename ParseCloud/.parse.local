@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "PingIT": {
+      "applicationId": "kddcodGlyJ6DmGI7FihXt8BsXyOTS09Dgpj8UA49"
+    },
+    "_default": {
+      "link": "PingIT"
+    }
+  }
+}
