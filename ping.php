@@ -2,13 +2,13 @@
 
 date_default_timezone_set('UTC');
 
-function getProperDateFormat($value)
-{
-    $dateFormatString = 'Y-m-d\TH:i:s.u';
-    $date = date_format($value, $dateFormatString);
-    $date = substr($date, 0, -3) . 'Z';
-    return $date;
-}
+// function getProperDateFormat($value)
+// {
+//     $dateFormatString = 'Y-m-d\TH:i:s.u';
+//     $date = date_format($value, $dateFormatString);
+//     $date = substr($date, 0, -3) . 'Z';
+//     return $date;
+// }
 
 require 'vendor/autoload.php';
 use Parse\ParseObject;
@@ -34,7 +34,7 @@ if(isset($_SESSION["username"])) {
         $ping = new ParseObject("Pings");
         $ping->set("Title","TLC Helpdesk"); //Auto set, we change later if need be
         $ping->set("Message",$_POST["message"]);
-        $newDate = getProperDateFormat(new DateTime());
+        //$newDate = getProperDateFormat(new DateTime());
         $date = array(
         "__type" => "Date",
         "iso" => date("c")
