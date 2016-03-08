@@ -126,6 +126,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
                     else {
                         echo "<li><a href='#'>".$_SESSION["username"]."</a></li>";
                         echo "<li><a id='logoutUser' href='logout.php'>Logout</a></li>";
+                        //  echo '<li>Current PHP version: ' . phpversion()."</li>";
                     }
                     ?>
                 </ul>
@@ -150,7 +151,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
             <div class="col-lg-1"></div>
             
              <div class="col-lg-4">
-                <form id="formNotify" action="notify.php" method="post" class="form-horizontal">
+                <form id="formNotify" action="ping.php" method="post" class="form-horizontal">
                     <fieldset>
                         <legend>Notification</legend>
                         <div class="form-group">
