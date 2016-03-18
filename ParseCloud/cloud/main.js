@@ -17,22 +17,6 @@ Parse.Cloud.afterSave( "Pings", function(request) {
 			pushQuery.limit = 1;
 			pushQuery.descending("updatedAt");
 			pushQuery.equalTo("user", user);
-			
-			/*pushQuery.find({
-				success: function(results) {
-					console.log ("Results count is  " + results.length);
-					console.log ("Object Looks Like: " + JSON.stringify(results));
-					
-					//response.success();
-				},
-				error: function() {
-					console.log("We got no user related to userID(" + user.id + ")");
-					//response.error("No driver related to userID");
-				}
-			}); */
-
-			//console.log("Limit: " + pushQuery.limit);
-			//console.log("UserId: " + user.id);
 
 			//Send Push message
 			Parse.Push.send({
@@ -43,6 +27,26 @@ Parse.Cloud.afterSave( "Pings", function(request) {
 					sound: "default"
 				}
 			});
+			
+			if(user.get('resendDelay') > 0) {
+				var minToMilli=60000;//millisecs]
+				var date = new Date();
+                //console.log("Offset: "+date.getTimezoneOffset())
+				var delay = new Date(date.getTime() + (user.get('resendDelay') * minToMilli));
+                //console.log("Right now: "+date+"; in ISO: "+date.toISOString())
+                //console.log("Delay: "+delay+"; ISO: "+delay.toISOString()+")
+                
+				Parse.Push.send({
+                    where: pushQuery,
+                    push_time: delay.toISOString(),
+                    data: {
+                        alert: message,
+                        //title: "TLC Helpdesk",
+                        sound: "default"
+                    }
+                });
+			}
+			
 		}
 		else
 		{
