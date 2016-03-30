@@ -253,7 +253,7 @@ input, button, textarea {
   height: 72px;
   position: relative;
   background: url("../img/image-profile.svg") no-repeat center center;
-  margin-left: 20px;
+  margin-left: 10px;
   float: left;
 }
 
