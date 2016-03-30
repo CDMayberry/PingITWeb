@@ -42,7 +42,7 @@ input, button, textarea {
 
 .left-nav {
   width: 220px;
-  height: 95vh;
+  height: 94vh;
   background: #4e4273;
   padding: 20px 0 0 0;
   border-right: 1px solid #3b1973;
@@ -285,7 +285,7 @@ input, button, textarea {
 
 .right-section {
   width: calc(100% - 220px);
-  height: 95vh;
+  height: 94vh;
   float: left;
 }
 
