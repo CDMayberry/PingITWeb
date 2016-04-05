@@ -52,7 +52,7 @@ input, button, textarea {
 .left-nav-icon {
   width: 142px;
   height: 50px;
-  background: url("sendbird_ic_launcher.jpg") no-repeat center center;
+  background: url("../img/sendbird_ic_launcher.jpg") no-repeat center center;
   margin-left: 14px;
 }
 
