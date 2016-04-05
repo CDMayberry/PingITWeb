@@ -117,10 +117,6 @@ else {
       </div>
 
       <div class="left-nav-channel-section">
-        <div class="left-nav-channel-title">OPEN CHAT</div>
-        <div class="left-nav-channel-empty">Get started to select<br>a channel</div>
-        <div id="open_channel_list"></div>
-
         <div class="left-nav-channel-title title-messaging">1ON1 & GROUP CHAT</div>
         <div id="messaging_channel_list"></div>
       </div>
