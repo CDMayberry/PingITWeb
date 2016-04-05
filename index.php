@@ -70,6 +70,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
     <meta name="author" content="">
 
     <title>PingIT</title>
+    <link rel="shortcut icon" href="sendbird_img_logo.png" />
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
