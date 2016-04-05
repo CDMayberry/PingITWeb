@@ -112,7 +112,7 @@ else {
 
     <!-- left nav -->
     <div class="left-nav">
-      <a href="//sendbird.com" target="_blank"><div class="left-nav-icon"></div></a>
+      <div class="left-nav-icon"></div>
       <div class="left-nav-channel-select">
         <button type="button" class="left-nav-button left-nav-open" id="btn_open_chat">
           OPEN CHAT
