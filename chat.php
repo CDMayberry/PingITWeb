@@ -114,12 +114,6 @@ else {
     <div class="left-nav">
       <div class="left-nav-icon"></div>
       <div class="left-nav-channel-select">
-          <?php if(False) : ?>
-        <button type="button" class="left-nav-button left-nav-open" id="btn_open_chat">
-          OPEN CHAT
-          <div class="left-nav-button-guide"></div>
-        </button>
-        <? endif; ?>
         <button type="button" class="left-nav-button left-nav-messaging" id="btn_messaging_chat">
           1ON1 & GROUP CHAT
           <div class="left-nav-button-guide"></div>
