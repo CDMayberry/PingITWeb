@@ -28,7 +28,7 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 
 $user = new ParseUser();
 
-if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] != "" && $_POST["password"] != "") {
+if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["friendlyName"]) && $_POST["username"] != "" && $_POST["password"] != "" && $_POST["friendlyName"] != "") {
     
     /* set session storage */
     ParseClient::setStorage( new ParseSessionStorage() );
@@ -37,6 +37,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] 
         $user->setUsername($_POST["username"]);
         $user->setEmail($_POST["username"]);
         $user->setPassword($_POST["password"]);
+        $user->set("friendlyName",$_POST[]);
         $user->signUp();
         
         $_SESSION["username"] = ParseUser::getCurrentUser()->get("username");
@@ -46,7 +47,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] 
     }
 } 
 else {
-    setcookie("regError","A Username and Password is required");
+    setcookie("regError","Username, Password, and FriendlyName are required");
 }
 
 header("Location: index.php"); /* Redirect browser */
