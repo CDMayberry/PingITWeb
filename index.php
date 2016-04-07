@@ -348,9 +348,9 @@ if(ParseUser::getCurrentUser() !== NULL) {
                                 </div>
                             </div>
                             <div class="form-group <?php if($regError){ echo "has-error"; } ?>">
-                                <label for="regFriendly" class="col-lg-2 control-label">Email</label>
+                                <label for="regFriendly" class="col-lg-2 control-label">Chat Name</label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="regFriendly" name="friendlyName" data-toggle="tooltip" data-placement="right" title="Name seen by users on the app when chatting">
+                                    <input type="text" class="form-control" id="regFriendly">
                                 </div>
                             </div>
                             <div class="form-group <?php if($regError){ echo "has-error"; } ?>">
