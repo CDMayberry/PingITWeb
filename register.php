@@ -41,6 +41,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["frien
         $user->signUp();
         
         $_SESSION["username"] = ParseUser::getCurrentUser()->get("username");
+        $_SESSION["friendlyName"] = ParseUser::getCurrentUser()->get("friendlyName");
     } catch (ParseException $ex) {
         // error in $ex->getMessage();
         setcookie("regError",$ex->getMessage());

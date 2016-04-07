@@ -38,6 +38,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] 
     try {
         $user = ParseUser::logIn($_POST["username"], $_POST["password"]);
         $_SESSION["username"] = ParseUser::getCurrentUser()->get("username");
+        $_SESSION["friendlyName"] = ParseUser::getCurrentUser()->get("friendlyName");
         // Do stuff after successful login.
     } catch (ParseException $ex) {
         // The login failed. Check error to see why.

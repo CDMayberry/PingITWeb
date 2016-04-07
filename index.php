@@ -111,7 +111,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
                     <li>
                         <?php if(isset($_SESSION["username"])) : ?>
                         
-                        <a href="chat.php?nickname=<?php echo $_SESSION["username"]; ?>">Chat</a>
+                        <a href="chat.php?nickname=<?php echo $_SESSION["friendlyName"]; ?>">Chat</a>
                         
                         <?php endif; ?>
                         
