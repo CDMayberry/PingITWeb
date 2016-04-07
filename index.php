@@ -350,7 +350,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
                             <div class="form-group <?php if($regError){ echo "has-error"; } ?>">
                                 <label for="regFriendly" class="col-lg-2 control-label">Chat Name</label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="regFriendly">
+                                    <input type="text" class="form-control" id="regFriendly" name="friendly">
                                 </div>
                             </div>
                             <div class="form-group <?php if($regError){ echo "has-error"; } ?>">
