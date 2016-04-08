@@ -52,7 +52,7 @@ else {
 <head>
   <meta charset="UTF-8">
 
-  <link rel="shortcut icon" href="https://s3.amazonaws.com/sendbird-static/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="sendbird_img_logo.png" />
 
   <link href='https://fonts.googleapis.com/css?family=Exo+2:400,900italic,900,800italic,800,700italic,700,600italic,600,500italic,500,400italic,300italic,200italic,200,100italic,100,300'
         rel='stylesheet' type='text/css'>
@@ -112,23 +112,11 @@ else {
 
     <!-- left nav -->
     <div class="left-nav">
-      <a href="//sendbird.com" target="_blank"><div class="left-nav-icon"></div></a>
+      <div class="left-nav-icon"></div>
       <div class="left-nav-channel-select">
-        <button type="button" class="left-nav-button left-nav-open" id="btn_open_chat">
-          OPEN CHAT
-          <div class="left-nav-button-guide"></div>
-        </button>
-        <button type="button" class="left-nav-button left-nav-messaging" id="btn_messaging_chat">
-          1ON1 & GROUP CHAT
-          <div class="left-nav-button-guide"></div>
-        </button>
       </div>
 
       <div class="left-nav-channel-section">
-        <div class="left-nav-channel-title">OPEN CHAT</div>
-        <div class="left-nav-channel-empty">Get started to select<br>a channel</div>
-        <div id="open_channel_list"></div>
-
         <div class="left-nav-channel-title title-messaging">1ON1 & GROUP CHAT</div>
         <div id="messaging_channel_list"></div>
       </div>

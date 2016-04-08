@@ -42,7 +42,7 @@ input, button, textarea {
 
 .left-nav {
   width: 220px;
-  height: 100vh;
+  height: 94vh;
   background: #4e4273;
   padding: 20px 0 0 0;
   border-right: 1px solid #3b1973;
@@ -253,7 +253,7 @@ input, button, textarea {
   height: 72px;
   position: relative;
   background: url("../img/image-profile.svg") no-repeat center center;
-  margin-left: 20px;
+  margin-left: 10px;
   float: left;
 }
 
@@ -285,7 +285,7 @@ input, button, textarea {
 
 .right-section {
   width: calc(100% - 220px);
-  height: 100vh;
+  height: 94vh;
   float: left;
 }
 

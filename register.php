@@ -28,7 +28,7 @@ ParseClient::initialize( $app_id, $rest_key, $master_key );
 
 $user = new ParseUser();
 
-if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] != "" && $_POST["password"] != "") {
+if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["friendly"]) && $_POST["username"] != "" && $_POST["password"] != "" && $_POST["friendly"] != "") {
     
     $pass = $_POST["password"];
     if(strlen($pass) < 8) {
@@ -58,16 +58,18 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] 
         $user->setUsername($_POST["username"]);
         $user->setEmail($_POST["username"]);
         $user->setPassword($_POST["password"]);
+        $user->set("friendlyName",$_POST["friendly"]);
         $user->signUp();
         
         $_SESSION["username"] = ParseUser::getCurrentUser()->get("username");
+        $_SESSION["friendlyName"] = ParseUser::getCurrentUser()->get("friendlyName");
     } catch (ParseException $ex) {
         // error in $ex->getMessage();
         setcookie("regError",$ex->getMessage());
     }
 } 
 else {
-    setcookie("regError","A Username and Password is required");
+    setcookie("regError","Username, Password, and Chat Name are required");
 }
 
 header("Location: index.php"); /* Redirect browser */

@@ -70,6 +70,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
     <meta name="author" content="">
 
     <title>PingIT</title>
+    <link rel="shortcut icon" href="sendbird_img_logo.png" />
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -110,7 +111,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
                     <li>
                         <?php if(isset($_SESSION["username"])) : ?>
                         
-                        <a href="chat.php?nickname=<?php echo $_SESSION["username"]; ?>">Chat</a>
+                        <a href="chat.php?nickname=<?php echo $_SESSION["friendlyName"]; ?>">Chat</a>
                         
                         <?php endif; ?>
                         
@@ -344,6 +345,12 @@ if(ParseUser::getCurrentUser() !== NULL) {
                                 <label for="regName" class="col-lg-2 control-label">Email</label>
                                 <div class="col-lg-8">
                                     <input type="text" class="form-control" id="regName" name="username">
+                                </div>
+                            </div>
+                            <div class="form-group <?php if($regError){ echo "has-error"; } ?>">
+                                <label for="regFriendly" class="col-lg-2 control-label">Chat Name</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="regFriendly" name="friendly">
                                 </div>
                             </div>
                             <div class="form-group <?php if($regError){ echo "has-error"; } ?>">
