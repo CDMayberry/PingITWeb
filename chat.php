@@ -85,7 +85,7 @@ else {
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Chat</a>
+                        <a href="#">Chat as <?php echo $_SESSION["friendlyName"] ?></a>
                     </li>
                 </ul>
                 <ul class='nav navbar-nav navbar-right'>
@@ -117,7 +117,7 @@ else {
       </div>
 
       <div class="left-nav-channel-section">
-        <div class="left-nav-channel-title title-messaging">1ON1 & GROUP CHAT</div>
+        <div class="left-nav-channel-title title-messaging">Current Chat</div>
         <div id="messaging_channel_list"></div>
       </div>
 
@@ -142,7 +142,7 @@ else {
         <div class="chat-top__title"></div>
         <div class="chat-top-button">
 
-          <div class="chat-top__button chat-top__button-invite">INVITE</div>
+          <!--<div class="chat-top__button chat-top__button-invite">INVITE</div>
           <div class="modal-guide-user">
             user list
           </div>
@@ -150,7 +150,7 @@ else {
           <div class="chat-top__button chat-top__button-member"></div>
           <div class="modal-guide-member">
             Current member list
-          </div>
+          </div>-->
 
           <div class="chat-top__button chat-top__button-leave"></div>
           <div class="modal-guide-leave">
@@ -216,7 +216,7 @@ else {
     </div>
   </div>
 
-  <div class="modal-member">
+  <!--<div class="modal-member">
     <div class="modal-member-title">CURRENT MEMBER LIST</div>
     <div class="modal-member-list"></div>
   </div>
@@ -233,7 +233,7 @@ else {
     <div class="modal-invite-bottom">
       <button type="button" class="modal-invite-bottom__button" onclick="inviteMember()">INVITE</button>
     </div>
-  </div>
+  </div>-->
 
   <div class="modal-leave-channel">
     <div class="modal-leave-channel-card">
