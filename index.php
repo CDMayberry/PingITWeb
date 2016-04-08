@@ -111,7 +111,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
                     <li>
                         <?php if(isset($_SESSION["username"])) : ?>
                         
-                        <a href="chat.php?nickname=<?php echo $_SESSION["friendlyName"]; ?>">Chat</a>
+                        <a href="chat.php?nickname=<?php echo $_SESSION["friendlyName"]; ?>">Chat as <?php echo $_SESSION["friendlyName"] ?></a>
                         
                         <?php endif; ?>
                         
@@ -140,14 +140,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
     <!-- Page Content -->
     <div class="container">
         <?php if(isset($_SESSION["username"])) : ?>
-        <!--<div class="row">
-            <div class="col-lg-12 text-center">
-                <h1>The start of PingIT: IT HAS BEGUN</h1>
-                <p class="lead">And it has STUFF! <?php if(isset($_COOKIE["Posted"])){echo "<br/> This was posted: ".$_COOKIE["Posted"]; setcookie("Posted","",1);}  else {echo "<br/> Non email";}?></p>
-            </div>
-        </div>-->
         <!-- /.row -->
-        
         <div class="row">
             <div class="col-lg-1"></div>
             
