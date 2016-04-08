@@ -113,9 +113,6 @@ else {
     <!-- left nav -->
     <div class="left-nav">
       <div class="left-nav-icon"></div>
-      <div class="left-nav-channel-select">
-      </div>
-
       <div class="left-nav-channel-section">
         <div class="left-nav-channel-title title-messaging">Current Chat</div>
         <div id="messaging_channel_list"></div>

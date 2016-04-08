@@ -117,7 +117,7 @@ input, button, textarea {
 
 .left-nav-channel-section {
   height: calc(100% - 240px);
-  margin-top: 18px;
+  /*margin-top: 18px;*/
   overflow-y: auto;
 }
 
