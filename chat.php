@@ -64,7 +64,7 @@ else {
   
   <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
 
-  <title>Ping IT SendBird</title>
+  <title>PingIT SendBird</title>
   
 </head>
 <body>

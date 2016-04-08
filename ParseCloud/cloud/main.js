@@ -74,3 +74,15 @@ Parse.Cloud.afterSave( "Annoucement", function(request) {
 		}
 	});
 });
+
+Parse.Cloud.beforeSave(Parse.User, function(request, response) {
+	
+	//console.log("Checking user resend");
+	
+	if (!request.object.get("resendDelay")) {
+		//console.log("Setting default resend");
+		request.object.set("resendDelay", 0);
+	}
+
+	response.success();
+});

@@ -30,6 +30,27 @@ $user = new ParseUser();
 
 if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] != "" && $_POST["password"] != "") {
     
+    $pass = $_POST["password"];
+    if(strlen($pass) < 8) {
+        setcookie("regError","Password must be at least 8 characters");
+        header("Location: index.php"); /* Redirect browser */
+        exit();
+    }
+    
+    //Will remove any numbers, thus if no numbers exist it will match the length
+    if(strcspn($pass, '0123456789') == strlen($pass)) {
+        setcookie("regError","Password must contain numbers");
+        header("Location: index.php"); /* Redirect browser */
+        exit();
+    }
+    
+    //Will remove any numbers, thus if it is all numbers the length will be 0
+    if(strcspn($pass, '0123456789') == 0) {
+        setcookie("regError","Password must contain letters");
+        header("Location: index.php"); /* Redirect browser */
+        exit();
+    }
+    
     /* set session storage */
     ParseClient::setStorage( new ParseSessionStorage() );
 
