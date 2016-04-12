@@ -17,7 +17,7 @@ $master_key = "Fm9X40ewplSIEDTOmYxVdCEN7ge31vgfFwScYr3y";
 
 ParseClient::initialize( $app_id, $rest_key, $master_key );
 
-if(isset($_POST["categoryId"]) && $_POST["categoryId"] != "" && isset($_POST["question"]) && $_POST["question"] != "" && isset($_POST["answer"]) && $_POST["answer"] != "") {
+if(isset($_POST["categoryId"]) && $_POST["categoryId"] != "" && isset($_POST["question"]) && $_POST["question"] != "" && strlen($_POST["question"]) <= 110 && isset($_POST["answer"]) && $_POST["answer"] != "" && strlen($_POST["answer"]) <= 255) {
     $query = new ParseQuery("FAQ_Category");
     try {
         $category = $query->get($_POST["categoryId"]);
@@ -47,6 +47,12 @@ else if(!isset($_POST["question"]) || $_POST["question"] == "") {
 }
 else if(!isset($_POST["answer"]) || $_POST["answer"] == "") {
     setcookie("modError","Answer required");
+}
+else if(strlen($_POST["question"]) > 110) {
+    setcookie("modError","Question cannot contain more than 110 characters");
+}
+else if(strlen($_POST["answer"]) > 1000) {
+    setcookie("modError","Answer cannot contain more than 1000 characters");
 }
 
 header("Location: index.php"); /* Redirect browser */

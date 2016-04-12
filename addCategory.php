@@ -16,12 +16,7 @@ $master_key = "Fm9X40ewplSIEDTOmYxVdCEN7ge31vgfFwScYr3y";
 
 ParseClient::initialize( $app_id, $rest_key, $master_key );
 
-// if(isset($_SESSION["username"])) {
-//     unset($_SESSION["username"]);
-//     ParseUser::logOut();
-// }
-
-if(isset($_POST["category"]) && $_POST["category"] != "") {
+if(isset($_POST["category"]) && $_POST["category"] != "" && strlen($_POST["category"]) <= 45) {
     $category = new ParseObject("FAQ_Category");
     $category->set("Text",$_POST["category"]);
     try {
@@ -30,6 +25,9 @@ if(isset($_POST["category"]) && $_POST["category"] != "") {
         /* Should pass back a cookie with the error $ex->getMessage() */    
         setcookie("modError",$ex->getMessage());
     }
+}
+else if(strlen($_POST["category"]) > 45) {
+    setcookie("modError","Category cannot contain more than 45 characters");
 }
 
 header("Location: index.php"); /* Redirect browser */

@@ -30,7 +30,7 @@ $master_key = "Fm9X40ewplSIEDTOmYxVdCEN7ge31vgfFwScYr3y";
 ParseClient::initialize( $app_id, $rest_key, $master_key );
 
 if(isset($_SESSION["username"])) {
-    if(isset($_POST["message"]) && $_POST["message"] != "" && isset($_POST["inputEmail"]) && $_POST["inputEmail"] != "") {
+    if(isset($_POST["message"]) && $_POST["message"] != "" && strlen($_POST["message"]) <= 255 && isset($_POST["inputEmail"]) && $_POST["inputEmail"] != "") {
         $ping = new ParseObject("Pings");
         $ping->set("Title","TLC Helpdesk"); //Auto set, we change later if need be
         $ping->set("Message",$_POST["message"]);
@@ -54,6 +54,9 @@ if(isset($_SESSION["username"])) {
             /* Should pass back a cookie with the error $ex->getMessage() */    
             setcookie("modError",$ex->getMessage());
         }
+    }
+    else if(strlen($_POST["message"]) > 255) {
+        setcookie("modError","Message cannot be more than 255 characters long");
     }
 }
 
