@@ -30,7 +30,16 @@ $user = new ParseUser();
 
 if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["friendly"]) && $_POST["username"] != "" && $_POST["password"] != "" && $_POST["friendly"] != "") {
     
+    $email = $_POST["username"];
     $pass = $_POST["password"];
+    $suffix = substr($email, strpos($email, '@'));
+    
+    if(strtolower($suffix) != "@gcc.edu") {
+        setcookie("regError","Must be a gcc.edu email");
+        header("Location: index.php"); /* Redirect browser */
+        exit();
+    }
+    
     if(strlen($pass) < 8) {
         setcookie("regError","Password must be at least 8 characters");
         header("Location: index.php"); /* Redirect browser */
@@ -59,6 +68,7 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["frien
         $user->setEmail($_POST["username"]);
         $user->setPassword($_POST["password"]);
         $user->set("friendlyName",$_POST["friendly"]);
+        $user->set("isAdmin",TRUE);
         $user->signUp();
         
         $_SESSION["username"] = ParseUser::getCurrentUser()->get("username");

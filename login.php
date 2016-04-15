@@ -6,13 +6,13 @@ use Parse\ParseQuery;
 use Parse\ParseACL;
 use Parse\ParsePush;
 use Parse\ParseUser;
-use Parse\ParseInstallation;
+//use Parse\ParseInstallation;
 use Parse\ParseException;
-use Parse\ParseAnalytics;
-use Parse\ParseFile;
-use Parse\ParseCloud;
+//use Parse\ParseCloud;
 use Parse\ParseClient;
 use Parse\ParseSessionStorage;
+
+class AdminException extends Exception { }
 
 /* Start session MUST be between autoload and intialization. */
 session_start();
@@ -37,12 +37,18 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && $_POST["username"] 
 
     try {
         $user = ParseUser::logIn($_POST["username"], $_POST["password"]);
+        if(ParseUser::getCurrentUser()->get("isAdmin") != TRUE) {
+            ParseUser::logOut();
+            throw new AdminException("User is not an admin");
+        }
         $_SESSION["username"] = ParseUser::getCurrentUser()->get("username");
         $_SESSION["friendlyName"] = ParseUser::getCurrentUser()->get("friendlyName");
         // Do stuff after successful login.
     } catch (ParseException $ex) {
         // The login failed. Check error to see why.
         setcookie("loginError",$ex->getMessage());
+    } catch (AdminException $aex) {
+        setcookie("loginError",$aex->getMessage());
     }
 } 
 else {

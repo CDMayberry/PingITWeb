@@ -53,6 +53,14 @@ if(isset($_SESSION["username"])) {
         } catch (ParseException $ex) {  
             /* Should pass back a cookie with the error $ex->getMessage() */    
             setcookie("modError",$ex->getMessage());
+        } catch (Exception $ex) {  
+            /* Should pass back a cookie with the error $ex->getMessage() */
+            if($ex->getMessage() == "Cannot create a ParseRelationOperation with no objects.") { //I know this is not great, but the php code uses a base exception when throwing this error and not a parse exception.
+                setcookie("modError","Email not found");
+            }
+            else {
+                throw $ex;
+            }
         }
     }
     else if(strlen($_POST["message"]) > 255) {
