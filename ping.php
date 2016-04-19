@@ -44,11 +44,18 @@ if(isset($_SESSION["username"])) {
         
         try {
             $query = new ParseQuery($class = '_User');
-            $query->equalTo("email", $_POST["inputEmail"]);
+            $query->equalTo("username", $_POST["inputEmail"]);
             $user = $query->first();
+            //print $_POST["inputEmail"]."<br>";
+            //print_r($user);
+            //print "Made it <br>";
             $relation = $ping->getRelation("User");
+            //print "Made it 2<br>";
+            //print_r($relation);
             $relation->add($user);
+            //print "Made it 3<br>";
             $ping->save();
+
 
         } catch (ParseException $ex) {  
             /* Should pass back a cookie with the error $ex->getMessage() */    
@@ -56,6 +63,7 @@ if(isset($_SESSION["username"])) {
         } catch (Exception $ex) {  
             /* Should pass back a cookie with the error $ex->getMessage() */
             if($ex->getMessage() == "Cannot create a ParseRelationOperation with no objects.") { //I know this is not great, but the php code uses a base exception when throwing this error and not a parse exception.
+                //print $ex->getMessage();
                 setcookie("modError","Email not found");
             }
             else {
