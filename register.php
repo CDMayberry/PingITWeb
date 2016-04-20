@@ -47,14 +47,14 @@ if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["frien
     }
     
     //Will remove any numbers, thus if no numbers exist it will match the length
-    if(strcspn($pass, '0123456789') == strlen($pass)) {
+    if(preg_match('/\d/',$string) == 0) {
         setcookie("regError","Password must contain numbers");
         header("Location: index.php"); /* Redirect browser */
         exit();
     }
     
     //Will remove any numbers, thus if it is all numbers the length will be 0
-    if(strcspn($pass, '0123456789') == 0) {
+    if(preg_match('/[a-zA-Z]/',$pass) == 0) {
         setcookie("regError","Password must contain letters");
         header("Location: index.php"); /* Redirect browser */
         exit();
