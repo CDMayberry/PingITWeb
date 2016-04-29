@@ -64,7 +64,7 @@ else {
   
   <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
 
-  <title>PingIT SendBird</title>
+  <title>Ping.IT SendBird</title>
   
 </head>
 <body>
@@ -79,7 +79,7 @@ else {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">PingIT</a>
+                <a class="navbar-brand" href="index.php">Ping.IT</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -159,7 +159,7 @@ else {
 
       <!-- channel empty -->
       <div class="chat-empty">
-        <div class="chat-empty chat-empty__tile">WELCOME TO PINGIT CHAT</div>
+        <div class="chat-empty chat-empty__tile">WELCOME TO PING.IT CHAT</div>
         <div class="chat-empty chat-empty__icon"></div>
         <div class="chat-empty chat-empty__desc">
           Users will engage in chat if they require assistance<br>

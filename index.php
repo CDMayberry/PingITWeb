@@ -69,7 +69,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PingIT</title>
+    <title>Ping.IT</title>
     <link rel="shortcut icon" href="sendbird_img_logo.png" />
 
     <!-- Bootstrap Core CSS -->
@@ -103,7 +103,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">PingIT</a>
+                <a class="navbar-brand" href="#">Ping.IT</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -277,7 +277,7 @@ if(ParseUser::getCurrentUser() !== NULL) {
         <?php else : ?>
         <div class="row">
              <div class="col-lg-12 text-center">
-                <h1>Please login to use PingIT web interface</h1>
+                <h1>Please login to use Ping.IT web interface</h1>
                 <?php if(isset($_COOKIE["Test"])) { echo "<b>".$_COOKIE["Test"]."</b>"; } ?>
             </div>
         </div>
